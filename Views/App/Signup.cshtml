@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="section section-signup" style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 600px;" data-background-color="orange">
+        <div class="container" >
+            <div class="row">
+                <div class="card card-signup" data-background-color="orange">
+                    <form class="form" method="" action="">
+                        <div class="header-primary text-center">
+                            <h4 class="title title-up">Sign Up</h4>
+                        </div>
+                        <div class="content">
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" ng-model="newUser.firstName" class="form-control" placeholder="First Name..." required>
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" ng-model="newUser.lastName" class="form-control" placeholder="Last Name (Surname)..." required>
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons ui-1_email-85"></i>
+                                </span>
+                                <input type="email" class="form-control" ng-model="newUser.email" placeholder="Email...">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="tel" ng-model="newUser.phoneNumber" class="form-control" placeholder="Phone Number...">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons gestures_tap-01"></i>
+                                </span>
+                                <input type="text" class="form-control date-picker" ng-model="newUser.dob" data-datepicker-color="primary" placeholder="DOB" required />
+                            </div>
+                            <div class="row">
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio1" value="Beginner" ng-model="newUser.level">
+                                    <label for="radio1">
+                                        Beginner
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio2" value="Level 1" ng-model="newUser.level">
+                                    <label for="radio2">
+                                        Level 1
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio3" value="Level 2" ng-model="newUser.level">
+                                    <label for="radio3">
+                                        Level 2
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio4" value="Level 3" ng-model="newUser.level">
+                                    <label for="radio4">
+                                        Level 3
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio5" value="Level 4" ng-model="newUser.level">
+                                    <label for="radio5">
+                                        Level 4
+                                    </label>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer text-center">
+                           <button ng-click="register()" class="btn btn-neutral btn-round btn-lg">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col text-center">
+                <a href="/" class="btn btn-simple btn-round btn-white btn-lg">Login</a>
+            </div>
+        </div>
+    </div>

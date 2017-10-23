@@ -1,0 +1,378 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+
+    <div class="section">
+        <div class="container">
+            <div class="content-centered"></div>
+            <div class="card">
+                <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#all" role="tab">All Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#begginer" role="tab">Begginers Class</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#level1" role="tab">Level 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#level2" role="tab">Level 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#level3" role="tab">Level 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#level4" role="tab">Level 4</a>
+                    </li>
+
+                </ul>
+                <div class="card-block">
+                    <!-- Tab panes -->
+                    <div class="tab-content text-center">
+
+                        <div class="tab-pane active" id="all" role="tabpanel">
+                            <div id="inputs">
+                                <h4>Quick Add </h4>
+                                <p class="category">New Student</p>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="now-ui-icons users_circle-08"></i>
+                                                </span>
+                                                <input type="text" ng-model="newUser.firstName" class="form-control" placeholder="First Name..." required ng-required="first name required">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-2">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="now-ui-icons users_circle-08"></i>
+                                                </span>
+                                                <input type="text" ng-model="newUser.lastName" class="form-control" placeholder="Last Name (Surname)..." required ng-required="last name required">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="now-ui-icons gestures_tap-01"></i>
+                                                </span>
+                                                <input type="text" class="form-control date-picker" ng-model="newUser.dob " data-datepicker-color="primary" placeholder="DOB" required ng-required="dob name required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-2">
+                                            <div class="input-group">
+                                                <select ng-model="newUser.level" name="select" ng-required="select a value">
+                                                    select
+                                                    <optgroup label="Class">
+                                                        <option value="Begginer">Begginer</option>
+
+                                                    </optgroup>
+                                                    <optgroup label="Levels">
+                                                        <option value="Level 1">1</option>
+                                                        <option value="Level 2">2</option>
+                                                        <option value="Level 3">3</option>
+                                                        <option value="Level 4">4</option>
+                                                    </optgroup>
+                                                </select>
+                                                <span class="input-group-addon">
+                                                    <i class="now-ui-icons design_bullet-list-67"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="input-group form-group-no-border">
+                                                <button ng-click="register()" class="btn btn-primary btn-round">Add New:)</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="inputs">
+                                <h4>Comprehensive List</h4>
+                                <p class="category">All Students</p>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-3">
+                                        <div class="input-group ">
+                                            <input type="text" class="form-control" placeholder="enter search keyword..." ng-model="searchKeyword">
+                                            <span class="input-group-addon">
+                                                <i class="now-ui-icons users_single-02"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tbody>
+                                    <tr ng-repeat="user in users | filter:searchKeyword">
+
+                                        <td>{{user.lastName}} {{user.firstName }}</td>
+                                        <td>{{user.dob | date}}</td>
+                                        <td>{{user.level}}</td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="removeRow(user.id)" type="button">
+                                                <i class="now-ui-icons ui-1_simple-delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="begginer" role="tabpanel">
+
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tbody>
+                                    <tr ng-repeat="user in beginnerUsers">
+
+                                        <td>{{user.lastName}} {{user.firstName }}</td>
+                                        <td>{{user.dob | date}}</td>
+                                        <td>{{user.level}}</td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="tab-pane" id="level1" role="tabpanel">
+
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tr ng-repeat="user in level1Users">
+
+                                    <td>{{user.lastName}} {{user.firstName }}</td>
+                                    <td>{{user.dob | date}}</td>
+                                    <td>{{user.level}}</td>
+                                    <td>
+                                        <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                            <i class="now-ui-icons design_bullet-list-67"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="level2" role="tabpanel">
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tbody>
+                                    <tr ng-repeat="user in level2Users">
+
+                                        <td>{{user.lastName}} {{user.firstName }}</td>
+                                        <td>{{user.dob | date}}</td>
+                                        <td>{{user.level}}</td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="level3" role="tabpanel">
+                            <p>
+                                And another, and the last...Data from Angular
+                            </p>
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tbody>
+                                    <tr ng-repeat="user in level3Users">
+
+                                        <td>{{user.lastName}} {{user.firstName }}</td>
+                                        <td>{{user.dob | date}}</td>
+                                        <td>{{user.level}}</td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="level4" role="tabpanel">
+                            <table class="table table-bordered table-hover">
+                                <tr>
+
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Level</th>
+                                    <th>Edit/Remove</th>
+                                </tr>
+                                <tbody>
+                                    <tr ng-repeat="user in level4Users">
+
+                                        <td>{{user.lastName}} {{user.firstName }}</td>
+                                        <td>{{user.dob | date}}</td>
+                                        <td>{{user.level}}</td>
+                                        <td>
+                                            <button data-toggle="modal" data-target="#myModal1" class="btn btn-primary btn-icon  btn-icon-mini btn-round" ng-click="edit(user)" type="button">
+                                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Mini Modal -->
+    <div class="modal fade  modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="modal-profile">
+                        <i class="now-ui-icons users_single-02"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                   
+                    <form class="form" method="" action="">
+                        <div class="header-primary text-center">
+                            <h4 class="title title-up">{{user.level}}</h4>
+                        </div>
+                        <div class="content">
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" ng-model="user.firstName" class="form-control" placeholder="First Name..." required>
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" ng-model="user.lastName" class="form-control" placeholder="Last Name (Surname)..." required>
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons ui-1_email-85"></i>
+                                </span>
+                                <input type="email" class="form-control" ng-model="user.email" placeholder="Email...">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="tel" ng-model="user.phoneNumber" class="form-control" placeholder="Phone Number...">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons gestures_tap-01"></i>
+                                </span>
+                                <input type="text" class="form-control date-picker" ng-model="user.dob" data-datepicker-color="primary" placeholder="DOB" required />
+                            </div>
+                            <div class="row">
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio1" value="Beginner" ng-model="user.level">
+                                    <label for="radio1">
+                                        Beginner
+                                    </label>
+                                </div>
+
+
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio2" value="Level 1" ng-model="user.level">
+                                    <label for="radio2">
+                                        Level 1
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio3" value="Level 2" ng-model="user.level">
+                                    <label for="radio3">
+                                        Level 2
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio4" value="Level 3" ng-model="user.level">
+                                    <label for="radio4">
+                                        Level 3
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="userlevel" id="radio5" value="Level 4" ng-model="user.level">
+                                    <label for="radio5">
+                                        Level 4
+                                    </label>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- If you want to add a checkbox to this form, uncomment this code -->
+                        <!--<div class="checkbox">
+                         <input id="checkboxSignup" type="checkbox">
+                          <label for="checkboxSignup">
+                         Some Agreement Statement before Adding this...
+                         </label>
+                        </div>-->
+
+                        <div class="footer text-center">
+                            <button ng-click="save()" class="btn btn-neutral btn-round btn-lg">Save:)</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link btn-neutral">Back</button>
+                    <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+</div>
