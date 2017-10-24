@@ -10,7 +10,8 @@
     function appController($scope, $http, userService) {
         var scope = $scope;
         var http = $http;
-        var url = 'http://localhost:61427/api/users/';
+        var url='http://sabeelul.apphb.com/api/users/'
+       // var url = 'http://localhost:61427/api/users/';
         scope.users = [];
         scope.name = 'Norms'
         scope.sayHello = sayHello;
